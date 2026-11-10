@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+  <defs>
+    <style>
+      .bg{fill:#f4f7fb}.title{font:700 34px Arial,sans-serif;fill:#14243a}.subtitle{font:17px Arial,sans-serif;fill:#53647b}.boundary{fill:#f0f6fd;stroke:#2876bd;stroke-width:3;rx:26}.node{fill:#fff;stroke:#3178c6;stroke-width:2.5;rx:16}.future{fill:#fff;stroke:#828d9d;stroke-width:2.5;stroke-dasharray:10 7;rx:16}.core{fill:#e2edf9;stroke:#3178c6;stroke-width:3;rx:18}.external{fill:#fff;stroke:#aebbd0;stroke-width:2;rx:16}.note{fill:#fff7e5;stroke:#d8a637;stroke-width:2;rx:13}.head{font:700 20px Arial,sans-serif;fill:#153354}.body{font:16px Arial,sans-serif;fill:#34465c}.small{font:14px Arial,sans-serif;fill:#56677c}.label{font:700 14px Arial,sans-serif;fill:#40546d}.link{stroke:#587493;stroke-width:3;fill:none}.dashed{stroke:#828d9d;stroke-width:2.5;stroke-dasharray:9 7;fill:none}.arrow{stroke:#3178c6;stroke-width:3;fill:none}
+    </style>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3178c6"/></marker>
+  </defs>
+  <rect class="bg" width="1600" height="1050"/>
+  <text class="title" x="65" y="65">Conexiones de red · Laboratorio AD, Linux y SIEM</text>
+  <text class="subtitle" x="65" y="101">Las VMs se conectan a un switch virtual común dentro de la LAN privada 10.10.10.0/24.</text>
+
+  <rect class="external" x="70" y="155" width="250" height="125"/>
+  <text class="head" x="100" y="197">Portátil anfitrión</text>
+  <text class="body" x="100" y="231">Hipervisor de escritorio</text>
+  <text class="small" x="100" y="258">VirtualBox / equivalente</text>
+
+  <rect class="external" x="70" y="360" width="250" height="125"/>
+  <text class="head" x="100" y="403">Internet</text>
+  <text class="body" x="100" y="438">Actualizaciones</text>
+  <path class="link" d="M195 280 V360"/>
+  <text class="label" x="210" y="327">NAT temporal</text>
+  <path class="dashed" d="M320 422 H400"/>
+  <text class="label" x="329" y="402">adaptador NAT</text>
+
+  <rect class="boundary" x="400" y="145" width="1140" height="760"/>
+  <text class="head" x="445" y="190">Red interna aislada · LAB 10.10.10.0/24</text>
+  <text class="small" x="445" y="220">Sin acceso entrante desde la red doméstica. NAT solo se habilita para descargar actualizaciones.</text>
+
+  <path class="link" d="M790 360 H805 V500 H855"/>
+  <path class="link" d="M1155 360 H1135 V500 H1095"/>
+  <path class="link" d="M790 690 H805 V560 H855"/>
+  <path class="link" d="M1155 690 H1135 V560 H1095"/>
+  <path class="dashed" d="M975 600 V700"/>
+
+  <rect class="node" x="500" y="285" width="290" height="150"/>
+  <text class="head" x="525" y="321">DC01 · 10.10.10.10</text>
+  <text class="body" x="525" y="356">Windows Server 2022 Eval.</text>
+  <text class="body" x="525" y="386">AD DS + DNS del dominio</text>
+  <text class="small" x="525" y="415">ad.laboratorio.test</text>
+
+  <rect class="node" x="1155" y="285" width="300" height="150"/>
+  <text class="head" x="1180" y="321">ADMIN01 · 10.10.10.20</text>
+  <text class="body" x="1180" y="356">Debian 13.7</text>
+  <text class="body" x="1180" y="386">Bastion SSH + scripts</text>
+  <text class="small" x="1180" y="415">Administración hacia DC01</text>
+
+  <rect class="core" x="855" y="460" width="240" height="140"/>
+  <text class="head" x="893" y="503">Switch virtual</text>
+  <text class="body" x="886" y="538">LAN LAB</text>
+  <text class="small" x="881" y="570">Conecta las VMs</text>
+
+  <rect class="node" x="500" y="620" width="290" height="150"/>
+  <text class="head" x="525" y="656">SOC01 · 10.10.10.30</text>
+  <text class="body" x="525" y="691">Ubuntu Server 24.04 LTS</text>
+  <text class="body" x="525" y="721">Wazuh SIEM</text>
+  <text class="small" x="525" y="750">Recibe y analiza eventos</text>
+
+  <rect class="node" x="1155" y="620" width="300" height="150"/>
+  <text class="head" x="1180" y="656">LNX01 · 10.10.10.40</text>
+  <text class="body" x="1180" y="691">Debian 13.7</text>
+  <text class="body" x="1180" y="721">Cliente Linux del dominio</text>
+  <text class="small" x="1180" y="750">Wazuh agent instalado</text>
+
+  <rect class="future" x="825" y="700" width="300" height="150"/>
+  <text class="head" x="850" y="736">W11-01 · 10.10.10.50</text>
+  <text class="body" x="850" y="771">Windows 11 Enterprise Eval.</text>
+  <text class="body" x="850" y="801">Cliente de dominio futuro</text>
+  <text class="small" x="850" y="830">Wazuh agent → SOC01</text>
+
+  <rect class="note" x="70" y="555" width="250" height="270"/>
+  <text class="head" x="100" y="599">Flujos principales</text>
+  <text class="body" x="100" y="641">Clientes → DC01</text>
+  <text class="small" x="100" y="667">DNS y autenticación</text>
+  <text class="body" x="100" y="711">ADMIN01 → DC01</text>
+  <text class="small" x="100" y="737">Gestión mediante scripts</text>
+  <text class="body" x="100" y="781">Agentes → SOC01</text>
+  <text class="small" x="100" y="807">Eventos para el SIEM</text>
+
+  <text class="small" x="445" y="945">DC01 es el DNS que usarán los equipos unidos al dominio. El switch es una conexión virtual del hipervisor, no otra VM.</text>
+  <text class="small" x="445" y="973">DC02 queda fuera de esta imagen, como has pedido.</text>
+</svg>

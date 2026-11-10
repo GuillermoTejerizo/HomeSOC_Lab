@@ -22,7 +22,7 @@ HomeSOC --> README.md
     |           |
     |           |-> README.md
     |
-    |---> Directori0
+    |---> Directorio
     |       |
     |       |--> README.md
     |       |--> Imagenes
